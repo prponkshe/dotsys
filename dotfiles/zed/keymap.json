@@ -1,0 +1,24 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+    {
+        // Standard Linux bindings
+        "bindings": {
+            "ctrl-w": "pane::CloseActiveItem",
+            "ctrl-b": "workspace::ToggleLeftDock",
+            "ctrl-shift-b": "workspace::ToggleRightDock",
+            "ctrl-t": "workspace::NewCenterTerminal",
+            "ctrl-shift-v": "editor::Paste",
+            "ctrl-c": "editor::Copy"
+        },
+    },
+    {
+        "context": "(vim_mode == normal) && !menu",
+        "bindings": {},
+    },
+]

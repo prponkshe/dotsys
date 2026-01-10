@@ -10,7 +10,8 @@
     nil
     nixd
     nixpkgs-fmt
-    nodejs
+    nodejs_24
+    codex
     gcc
     gd
     grim
@@ -20,20 +21,31 @@
     python314
     iftop
     below
+    devpod
     oxker
     vlc
     fd
     bat
     yazi
+    unzip
+    zip
+    gnutar
     dive
     wezterm
     zed-editor
+    curl
+    tree-sitter
+    lazygit
+    fzf
   ];
 
   virtualisation.docker.enable = true;
 
   programs = {
     firefox.enable = true;
+    nix-ld.enable = true;
+    zoxide.enable = true;
+    npm.enable = true;
 
     neovim = {
       enable = true;

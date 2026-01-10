@@ -9,7 +9,7 @@ return {
   use_fancy_tab_bar = false,
   window_decorations = "NONE",
   window_padding = { left = 6, right = 6, top = 6, bottom = 6 },
-  config.color_scheme = 'Gotham (Gogh)',
+  config.color_scheme = 'Gruvbox Dark (Gogh)',
 
   -- Cursor
   default_cursor_style = "BlinkingBlock",

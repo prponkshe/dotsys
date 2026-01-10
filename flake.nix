@@ -65,6 +65,12 @@
           specialArgs = { inherit inputs; };
           modules = [ ./configuration/variant/thinkpad-p14s.nix ];
         };
+        nixosConfigurations.vivobook = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./configuration/variant/vivobook.nix ];
+        };
+
       };
     };
 }

@@ -5,6 +5,7 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     vim
     git
+    alacritty
     gh
     ripgrep
     nil

@@ -12,6 +12,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    qbittorrent
   ];
 
   networking.hostName = "northee-ltp";
@@ -19,6 +20,7 @@
   services = {
     libinput.enable = true;
     openssh.enable = false;
+    tailscale.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

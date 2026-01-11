@@ -5,13 +5,19 @@
   ...
 }:
 
-{
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config = config.nixpkgs.config; # carries allowUnfree, etc.
+  };
+in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../modules/configuration.nix
   ];
 
   environment.systemPackages = with pkgs; [
+      pkgs-unstable.foxglove-studio
   ];
 
   networking.hostName = "ATL-HPLT-326";

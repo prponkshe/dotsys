@@ -56,20 +56,22 @@
           };
         };
       flake = {
-        nixosConfigurations.installer = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./installer.nix ];
-        };
-        nixosConfigurations.thinkpad-p14s = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [ ./configuration/variant/thinkpad-p14s.nix ];
-        };
-        nixosConfigurations.vivobook = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [ ./configuration/variant/vivobook.nix ];
-        };
+        nixosConfigurations =
+          let
+            inherit (inputs.nixpkgs.lib) genAttrs;
+            mkVariant = name: inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = { inherit inputs; };
+              modules = [ ./configuration/variant/${name}.nix ];
+            };
+          in
+          {
+            installer = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              modules = [ ./installer.nix ];
+            };
+          }
+          // genAttrs [ "thinkpad-p14s" "vivobook" ] mkVariant;
 
       };
     };

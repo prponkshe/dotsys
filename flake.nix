@@ -59,11 +59,13 @@
         nixosConfigurations =
           let
             inherit (inputs.nixpkgs.lib) genAttrs;
-            mkVariant = name: inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = { inherit inputs; };
-              modules = [ ./configuration/variant/${name}.nix ];
-            };
+            mkVariant =
+              name:
+              inputs.nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
+                modules = [ ./configuration/variant/${name}.nix ];
+              };
           in
           {
             installer = inputs.nixpkgs.lib.nixosSystem {
@@ -72,7 +74,6 @@
             };
           }
           // genAttrs [ "thinkpad-p14s" "vivobook" ] mkVariant;
-
       };
     };
 }

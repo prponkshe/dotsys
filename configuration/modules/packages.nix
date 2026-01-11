@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -16,7 +21,9 @@ in
     ripgrep
     nil
     nixd
+    lshw
     nixpkgs-fmt
+    virtualgl
     nodejs_24
     pkgs-unstable.codex
     gcc
@@ -34,6 +41,7 @@ in
     fd
     bat
     yazi
+    xhost
     unzip
     zip
     gnutar

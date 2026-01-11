@@ -47,6 +47,7 @@ in
     gnutar
     dive
     wezterm
+    swayfx
     zed-editor
     curl
     tree-sitter

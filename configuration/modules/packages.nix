@@ -1,5 +1,11 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config = config.nixpkgs.config; # carries allowUnfree, etc.
+  };
+in
 {
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -12,7 +18,7 @@
     nixd
     nixpkgs-fmt
     nodejs_24
-    codex
+    pkgs-unstable.codex
     gcc
     gd
     grim

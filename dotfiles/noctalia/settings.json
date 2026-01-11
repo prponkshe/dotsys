@@ -500,7 +500,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "directory": "/home/northee/.config/backgrounds",
+        "directory": "~/.config/backgrounds",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
@@ -510,8 +510,8 @@
         ],
         "overviewEnabled": false,
         "panelPosition": "follow_bar",
-        "randomEnabled": false,
-        "randomIntervalSec": 300,
+        "randomEnabled": true,
+        "randomIntervalSec": 1800,
         "recursiveSearch": false,
         "setWallpaperOnAllMonitors": true,
         "solidColor": "#1a1a2e",

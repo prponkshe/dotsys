@@ -49,13 +49,19 @@ in
     wezterm
     swayfx
     zed-editor
+    sshpass
     curl
+    vscode
     tree-sitter
     lazygit
+    lazyssh
+    rustup
+    cargo
     fzf
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.extraOptions = "--insecure-registry 10.10.0.105:5000 --insecure-registry localhost:5000";
 
   programs = {
     firefox.enable = true;

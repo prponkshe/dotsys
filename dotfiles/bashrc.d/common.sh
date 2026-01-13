@@ -17,6 +17,8 @@ alias killp='f(){ pids=$(pgrep -i -f "$1"); [ -n "$pids" ] && sudo kill $pids; }
 alias devzed='devpod up . --ide zed && exit'
 
 # System
+alias zz='lazyssh'
+alias addssh='ssh-copy-id -i ~/.ssh/id_ed25519.pub'
 alias my='sudo chown -R $(whoami):users .'
 alias duh='du -sh *' # Human-readable directory sizes
 alias mirror='xrandr --output HDMI-1 --same-as eDP-1 --mode 1920x1080'

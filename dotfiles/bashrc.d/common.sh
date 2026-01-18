@@ -13,11 +13,9 @@ alias catp='xclip -selection clipboard <'
 # Kill Program
 alias killp='f(){ pids=$(pgrep -i -f "$1"); [ -n "$pids" ] && sudo kill $pids; }; f'
 
-# Editor
-alias devzed='devpod up . --ide zed && exit'
-
 # System
 alias zz='lazyssh'
+alias zed='zeditor . && exit'
 alias addssh='ssh-copy-id -i ~/.ssh/id_ed25519.pub'
 alias my='sudo chown -R $(whoami):users .'
 alias duh='du -sh *' # Human-readable directory sizes

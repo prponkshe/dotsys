@@ -18,6 +18,8 @@ let
     noctalia = "noctalia";
     wezterm = "wezterm";
     sway = "sway";
+    helix = "helix";
+    flameshot = "flameshot";
   };
 in
 {

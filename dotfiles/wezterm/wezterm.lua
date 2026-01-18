@@ -37,7 +37,7 @@ local function docker_exec(window, pane)
         win:perform_action(
           act.SpawnCommandInNewTab({
             label = "docker:" .. id,
-            args = { "bash", "-lc", "docker exec -it " .. id .. " bash" },
+            args = { "bash", "-lc", "source ~/.bashrc.d/docker.sh && dock " .. id .. " bash" },
           }),
           p
         )

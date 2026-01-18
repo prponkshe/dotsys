@@ -16,19 +16,39 @@ in
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     vim
     git
+    vulkan-tools
     alacritty
+    black
     gh
+    cloud-utils
+    wl-clipboard
     ripgrep
+    bash-language-server
+    basedpyright
+    git-repo
     nil
     nixd
+    zellij
     lshw
     nixpkgs-fmt
-    virtualgl
     nodejs_24
-    pkgs-unstable.codex
     gcc
     gd
     grim
+    flameshot
+    horst
+    markdown-oxide
+    gawk
+    iputils
+    gcc
+    opencode
+    helix
+    dockerfile-language-server
+    unzip
+    wget
+    xz
+    zstd
+    efitools
     fuzzel
     clang-tools
     htop
@@ -48,10 +68,9 @@ in
     dive
     wezterm
     swayfx
-    zed-editor
+    pkgs-unstable.zed-editor
     sshpass
     curl
-    vscode
     tree-sitter
     lazygit
     lazyssh
@@ -68,13 +87,6 @@ in
     nix-ld.enable = true;
     zoxide.enable = true;
     npm.enable = true;
-
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      vimAlias = true;
-      viAlias = true;
-    };
 
     git = {
       enable = true;

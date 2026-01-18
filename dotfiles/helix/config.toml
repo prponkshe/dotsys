@@ -1,0 +1,43 @@
+theme = "kanagawa"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+rulers = [120]
+true-color = true
+mouse = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+character = "╎"
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
+[keys.normal]
+C-e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file',
+  ':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+# Default yank -> primary selection (X11 PRIMARY / Wayland primary)
+y = ":clipboard-yank"
+
+# Paste from primary selection
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"
+
+[keys.select]
+# Default yank -> primary selection (X11 PRIMARY / Wayland primary)
+y = ":clipboard-yank"
+
+# Paste from primary selection
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"

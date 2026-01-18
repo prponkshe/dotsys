@@ -43,6 +43,11 @@ bindsym $mod+Escape exec noctalia-shell ipc call sessionMenu toggle
       natural_scroll enabled
       middle_emulation enabled
   }
+
+  input * {
+    xkb_options caps:escape
+  }
+
 #
 #   input type:keyboard {
 #       xkb_layout "eu"
@@ -195,6 +200,6 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec flameshot gui
 
 include /etc/sway/config.d/*

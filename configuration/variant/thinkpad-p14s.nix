@@ -20,6 +20,7 @@ in
   environment.systemPackages = with pkgs; [
     pkgs-unstable.foxglove-studio
     devcontainer
+    nxpmicro-mfgtools
   ];
 
   networking.hostName = "ATL-HPLT-326";

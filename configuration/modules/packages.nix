@@ -11,18 +11,23 @@ let
     config = config.nixpkgs.config; # carries allowUnfree, etc.
   };
 in
-{
+{	
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     vim
     git
     vulkan-tools
     alacritty
+    inetutils
     black
     gh
+    ncdu
     cloud-utils
     wl-clipboard
+    obsidian
     ripgrep
+    proton-pass
+    jdk21
     bash-language-server
     basedpyright
     git-repo
@@ -81,6 +86,7 @@ in
 
   virtualisation.docker.enable = true;
   virtualisation.docker.extraOptions = "--insecure-registry 10.10.0.105:5000 --insecure-registry localhost:5000";
+  virtualisation.virtualbox.host.enable = true;
 
   programs = {
     firefox.enable = true;

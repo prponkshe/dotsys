@@ -101,7 +101,10 @@ in
   };
 
   home-manager.users.prponkshe = {
-    imports = [ ../modules/home.nix ];
+    imports = [
+      ../modules/home.nix
+      inputs.dms.homeModules.dank-material-shell
+    ];
     _module.args = {
       username = "prponkshe";
       homeDirectory = config.users.users.prponkshe.home;

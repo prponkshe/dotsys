@@ -482,7 +482,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "directory": "/home/prponkshe/Pictures/Wallpapers",
+        "directory": "/home/prponkshe/.config/backgrounds",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",

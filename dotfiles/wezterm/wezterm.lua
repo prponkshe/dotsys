@@ -120,4 +120,5 @@ local config = {
   },
 }
 
+config.color_scheme = "Noctalia"
 return config

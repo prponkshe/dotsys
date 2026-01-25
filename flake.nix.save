@@ -10,6 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
+    dms.url = "github:AvengeMedia/DankMaterialShell";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     noctalia.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
@@ -74,24 +75,7 @@
             };
           }
           // genAttrs [ "thinkpad-p14s" "vivobook" ] mkVariant;
-        homeConfigurations =
-          let
-            inherit (inputs.nixpkgs.lib) genAttrs;
-            mkVariant =
-              name:
-              inputs.home-manager.lib.homeManagerConfiguration {
-                pkgs = import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                  config.allowUnfree = true;
-                };
-                modules = [ ./configuration/modules/home.nix ];
-                extraSpecialArgs = {
-                  username = name;
-                  inherit inputs;
-                };
-              };
-          in
-          genAttrs [ "prponkshe" ] mkVariant;
+        homeConfigurations
       };
     };
 }

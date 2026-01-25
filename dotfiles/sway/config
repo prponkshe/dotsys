@@ -12,13 +12,13 @@ set $term wezterm
 # Your preferred application launcher
 set $menu fuzzel
 
-exec --no-startup-id noctalia-shell
+exec --no-startup-id qs -c noctalia-shell
 
 # Borders/title and gaps
 default_border pixel 4
 default_floating_border pixel 4
 gaps inner 3
-corner_radius 6
+#corner_radius 6
 
 # Window border colors
 client.focused          #00ffff #00ffff #00ffff #00ffff

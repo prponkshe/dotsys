@@ -86,7 +86,7 @@
         "terminal.ansi.dim_red": "#f3d8d9",
         "terminal.ansi.green": "#7e9cd8",
         "terminal.ansi.bright_green": "#7e9cd8",
-        "terminal.ansi.dim_green": "#d8e1f3",
+        "terminal.ansi.dim_green": "#96b1e9",
         "terminal.ansi.yellow": "#96b1e9",
         "terminal.ansi.bright_yellow": "#bed0f4",
         "terminal.ansi.dim_yellow": "#21242c",
@@ -258,7 +258,7 @@
             "font_weight": null
           },
           "string.special": {
-            "color": "#d8e1f3",
+            "color": "#c0a36e",
             "font_style": null,
             "font_weight": null
           },
@@ -378,7 +378,7 @@
         "terminal.ansi.dim_red": "#3b1117",
         "terminal.ansi.green": "#4d699b",
         "terminal.ansi.bright_green": "#4d699b",
-        "terminal.ansi.dim_green": "#192333",
+        "terminal.ansi.dim_green": "#1b3e7e",
         "terminal.ansi.yellow": "#1b3e7e",
         "terminal.ansi.bright_yellow": "#1f52ad",
         "terminal.ansi.dim_yellow": "#e2e4e9",
@@ -550,7 +550,7 @@
             "font_weight": null
           },
           "string.special": {
-            "color": "#192333",
+            "color": "#77713f",
             "font_style": null,
             "font_weight": null
           },
@@ -670,7 +670,7 @@
         "terminal.ansi.dim_red": "#f3d8d9",
         "terminal.ansi.green": "#7e9cd8",
         "terminal.ansi.bright_green": "#7e9cd8",
-        "terminal.ansi.dim_green": "#d8e1f3",
+        "terminal.ansi.dim_green": "#96b1e9",
         "terminal.ansi.yellow": "#96b1e9",
         "terminal.ansi.bright_yellow": "#bed0f4",
         "terminal.ansi.dim_yellow": "#21242c",
@@ -842,7 +842,7 @@
             "font_weight": null
           },
           "string.special": {
-            "color": "#d8e1f3",
+            "color": "#c0a36e",
             "font_style": null,
             "font_weight": null
           },
@@ -962,7 +962,7 @@
         "terminal.ansi.dim_red": "#3b1117",
         "terminal.ansi.green": "#4d699b",
         "terminal.ansi.bright_green": "#4d699b",
-        "terminal.ansi.dim_green": "#192333",
+        "terminal.ansi.dim_green": "#1b3e7e",
         "terminal.ansi.yellow": "#1b3e7e",
         "terminal.ansi.bright_yellow": "#1f52ad",
         "terminal.ansi.dim_yellow": "#e2e4e9",
@@ -1134,7 +1134,7 @@
             "font_weight": null
           },
           "string.special": {
-            "color": "#192333",
+            "color": "#77713f",
             "font_style": null,
             "font_weight": null
           },

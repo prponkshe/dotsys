@@ -8,7 +8,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias c='clear'
 alias penv='source ~/.venv/bin/activate'
-alias catp='xclip -selection clipboard <'
+alias catp='wl-copy -selection clipboard <'
 
 # Kill Program
 alias killp='f(){ pids=$(pgrep -i -f "$1"); [ -n "$pids" ] && sudo kill $pids; }; f'

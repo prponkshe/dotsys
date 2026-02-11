@@ -40,7 +40,7 @@
         // "calt": false
     },
     // The default font size for text in the editor
-    "buffer_font_size": 17,
+    "buffer_font_size": 12.0,
     // The weight of the editor font in standard CSS units from 100 to 900.
     "buffer_font_weight": 400,
     // Set the buffer's line height.
@@ -70,7 +70,7 @@
     // The weight of the UI font in standard CSS units from 100 to 900.
     "ui_font_weight": 400,
     // The default font size for text in the UI
-    "ui_font_size": 18,
+    "ui_font_size": 12.0,
     // The default font size for agent responses in the agent panel. Falls back to the UI font size if unset.
     "agent_ui_font_size": null,
     // The default font size for user messages in the agent panel.
@@ -133,7 +133,7 @@
     //         "restore_on_startup": "last_workspace",
     //  3. Do not restore previous workspaces
     //         "restore_on_startup": "none",
-    "restore_on_startup": "last_workspace",
+    "restore_on_startup": "empty_tab",
     // Whether to attempt to restore previous file's state when opening it again.
     // The state is stored per pane.
     // When disabled, defaults are applied instead of the state restoration.
@@ -1369,6 +1369,7 @@
         // Any addition to this list will be merged with the default list.
         // Globs are matched relative to the worktree root,
         // except when starting with a slash (/) or equivalent in Windows.
+        "provider": "none",
         "disabled_globs": [
             "**/.env*",
             "**/*.pem",
@@ -2054,6 +2055,7 @@
         // dirty files when closing the application.
         //
         // Default: true
+        "trust_all_worktrees": true,
         "restore_unsaved_buffers": true,
     },
     // Zed's Prettier integration settings.

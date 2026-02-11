@@ -106,6 +106,11 @@ share_internet() {
     echo "Note: rules are not persistent across reboot."
 }
 
+notify() {
+    "$@"
+    notify-send "Zellij" "Session '$ZELLIJ_SESSION_NAME' completed"
+}
+
 sort_media() {
     local depth=$1
 

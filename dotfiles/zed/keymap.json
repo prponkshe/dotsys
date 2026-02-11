@@ -18,9 +18,4 @@
             // "j k": "vim::NormalBefore"
         },
     },
-    {
-        "bindings": {
-            "ctrl+w": "pane::CloseActiveItem",
-        },
-    },
 ]

@@ -20,6 +20,7 @@ let
     sway = "sway";
     helix = "helix";
     flameshot = "flameshot";
+    zellij = "zellij";
   };
 in
 {

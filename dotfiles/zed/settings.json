@@ -23,10 +23,6 @@
     // 6. "TextMate"
     "base_keymap": "VSCode",
     // Features that can be globally enabled or disabled
-    "features": {
-        // Which edit prediction provider to use.
-        "edit_prediction_provider": "copilot",
-    },
     // The name of a font to use for rendering text in the editor
     // ".ZedMono" currently aliases to Lilex
     // but this may change in the future.
@@ -40,7 +36,7 @@
         // "calt": false
     },
     // The default font size for text in the editor
-    "buffer_font_size": 12.0,
+    "buffer_font_size": 16.0,
     // The weight of the editor font in standard CSS units from 100 to 900.
     "buffer_font_weight": 400,
     // Set the buffer's line height.
@@ -70,7 +66,7 @@
     // The weight of the UI font in standard CSS units from 100 to 900.
     "ui_font_weight": 400,
     // The default font size for text in the UI
-    "ui_font_size": 12.0,
+    "ui_font_size": 17.0,
     // The default font size for agent responses in the agent panel. Falls back to the UI font size if unset.
     "agent_ui_font_size": null,
     // The default font size for user messages in the agent panel.

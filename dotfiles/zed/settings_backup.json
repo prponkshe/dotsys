@@ -40,7 +40,7 @@
         // "calt": false
     },
     // The default font size for text in the editor
-    "buffer_font_size": 17,
+    "buffer_font_size": 16.0,
     // The weight of the editor font in standard CSS units from 100 to 900.
     "buffer_font_weight": 400,
     // Set the buffer's line height.
@@ -70,7 +70,7 @@
     // The weight of the UI font in standard CSS units from 100 to 900.
     "ui_font_weight": 400,
     // The default font size for text in the UI
-    "ui_font_size": 18,
+    "ui_font_size": 17.0,
     // The default font size for agent responses in the agent panel. Falls back to the UI font size if unset.
     "agent_ui_font_size": null,
     // The default font size for user messages in the agent panel.
@@ -117,7 +117,7 @@
     "vim_mode": true,
     // Whether to enable helix mode and key bindings.
     // Enabling this mode will automatically enable vim mode.
-    "helix_mode": false,
+    "helix_mode": true,
     // Whether to show the informational hover box when moving the mouse
     // over symbols in the editor.
     "hover_popover_enabled": false,
@@ -1369,6 +1369,7 @@
         // Any addition to this list will be merged with the default list.
         // Globs are matched relative to the worktree root,
         // except when starting with a slash (/) or equivalent in Windows.
+        "provider": "none",
         "disabled_globs": [
             "**/.env*",
             "**/*.pem",

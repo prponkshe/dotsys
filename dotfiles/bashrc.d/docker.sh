@@ -1,25 +1,6 @@
 # devcontainer aliases
 alias devup='devcontainer up --workspace-folder'
 
-hx_into() {
-  local c="$1"
-  local tmp
-  tmp="$(mktemp -d)"
-
-  # Copy helix config while FOLLOWING symlinks (dereference)
-  rsync -aL --delete "$HOME/.config/helix/" "$tmp/helix/"
-
-  docker cp "$tmp/helix" "$c":/tmp/helix && \
-  docker exec -it "$c" sh -lc '
-    set -e
-    mkdir -p ~/.config
-    rm -rf ~/.config/helix
-    mv /tmp/helix ~/.config/helix
-  ' && \
-  rm -rf "$tmp" && \
-  docker exec -it "$c" env COLORTERM=truecolor TERM=xterm-256color bash
-}
-
 hx-cpp() {
   local c="$1"
 
@@ -48,16 +29,7 @@ hx-cpp() {
     else
        ln -sf /usr/bin/clangd-21 /usr/local/bin/clangd
     fi
-
-    # install helix from PPA
-    if ! command -v hx >/dev/null 2>&1; then
-       add-apt-repository -y ppa:maveonair/helix-editor
-       apt-get update
-       apt-get install -y helix
-    fi
-
     clangd --version
-    hx --version
   '
 }
 
@@ -74,12 +46,12 @@ dock() {
     hx-cpp "$container" || return 1
   fi
 
-  hx_into "$container"
+  docker exec -it "$container" bash
 }
 
 _dock_complete() {
   local cur="${COMP_WORDS[COMP_CWORD]}"
-  COMPREPLY=( $(compgen -W "$(docker ps --format '{{.Names}}')" -- "$cur") )
+  COMPREPLY=($(compgen -W "$(docker ps --format '{{.Names}}')" -- "$cur"))
 }
 
 complete -F _dock_complete dock
@@ -90,12 +62,10 @@ if [[ "${TERM_PROGRAM:-}" == "WezTerm" ]] && [[ -n "${SSH_AUTH_SOCK:-}" ]] && [[
     "$XDG_RUNTIME_DIR/ssh-agent.socket" \
     "$XDG_RUNTIME_DIR/ssh-agent" \
     "$XDG_RUNTIME_DIR/gcr/ssh" \
-    "$XDG_RUNTIME_DIR/keyring/ssh" \
-  ; do
+    "$XDG_RUNTIME_DIR/keyring/ssh"; do
     if [[ -S "$s" ]]; then
       export SSH_AUTH_SOCK="$s"
       break
     fi
   done
 fi
-

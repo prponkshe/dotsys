@@ -25,6 +25,27 @@ if true then
         },
       },
     },
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          clangd = {
+            cmd = {
+              "clangd",
+              "--enable-config",
+            },
+            root_markers = {
+              ".clangd",
+              ".clang-tidy",
+              ".clang-format",
+              "compile_commands.json",
+              "compile_flags.txt",
+              ".git",
+            },
+          },
+        },
+      },
+    },
 
   }
 end

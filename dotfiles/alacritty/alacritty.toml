@@ -1,12 +1,61 @@
-[env]
-TERM = "xterm-256color"
+# Kanagawa theme for Alacritty
 
-# enable_scroll_bar = true
+[window]
+padding = { x = 8, y = 8 }
+dynamic_padding = true
+opacity = 0.96
+decorations = "None"
 
 [font]
-size = 13
+size = 12.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
 
 [colors]
-primary = { background = "#1E2326", foreground = "#DCD7BA" }
-normal = { black = "#090618", red = "#C34043", green = "#76946A", blue = "#7E9CD8", yellow = "#C0A36E", magenta = "#957FB8", cyan = "#6A9589", white = "#C8C093" }
-bright = { black = "#727169", red = "#E82424", green = "#98BB6C", blue = "#7FB4CA", yellow = "#E6C384", magenta = "#938AA9", cyan = "#7AA89F", white = "#DCD7BA" }
+transparent_background_colors = false
+
+[colors.primary]
+background = "#1f1f28"
+foreground = "#dcd7ba"
+
+[colors.cursor]
+text = "#1f1f28"
+cursor = "#c8c093"
+
+[colors.selection]
+text = "#dcd7ba"
+background = "#2d4f67"
+
+[colors.normal]
+black   = "#090618"
+red     = "#c34043"
+green   = "#76946a"
+yellow  = "#c0a36e"
+blue    = "#7e9cd8"
+magenta = "#957fb8"
+cyan    = "#6a9589"
+white   = "#c8c093"
+
+[colors.bright]
+black   = "#727169"
+red     = "#e82424"
+green   = "#98bb6c"
+yellow  = "#e6c384"
+blue    = "#7fb4ca"
+magenta = "#938aa9"
+cyan    = "#7aa89f"
+white   = "#dcd7ba"

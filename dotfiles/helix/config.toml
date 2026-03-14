@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "kanagawa-dragon"
 
 [editor]
 bufferline = "multiple"
@@ -20,13 +20,6 @@ render = true
 left = ["mode", "spinner", "version-control", "file-name"]
 
 [keys.normal]
-C-e = [
-  ':sh rm -f /tmp/unique-file',
-  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file',
-  ':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
-  ':open %sh{cat /tmp/unique-file}',
-  ':redraw',
-]
 # Default yank -> primary selection (X11 PRIMARY / Wayland primary)
 y = ":clipboard-yank"
 

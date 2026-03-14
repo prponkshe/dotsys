@@ -9,7 +9,7 @@
     // - "system": Use the theme that corresponds to the system's appearance
     // - "light": Use the theme indicated by the "light" field
     // - "dark": Use the theme indicated by the "dark" field
-    "theme": "Noctalia Dark",
+    "theme": "Kanagawa Dragon",
     "icon_theme": "Zed (Default)",
     // The name of a base set of key bindings to use.
     // This setting can take six values, each named after another
@@ -23,14 +23,10 @@
     // 6. "TextMate"
     "base_keymap": "VSCode",
     // Features that can be globally enabled or disabled
-    "features": {
-        // Which edit prediction provider to use.
-        "edit_prediction_provider": "copilot",
-    },
     // The name of a font to use for rendering text in the editor
     // ".ZedMono" currently aliases to Lilex
     // but this may change in the future.
-    "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+    "buffer_font_family": "JetBrainsMonoNL Nerd Font Mono",
     // Set the buffer text's font fallbacks, this will be merged with
     // the platform's default fallbacks.
     "buffer_font_fallbacks": null,
@@ -40,7 +36,7 @@
         // "calt": false
     },
     // The default font size for text in the editor
-    "buffer_font_size": 16.0,
+    "buffer_font_size": 17.0,
     // The weight of the editor font in standard CSS units from 100 to 900.
     "buffer_font_weight": 400,
     // Set the buffer's line height.
@@ -58,7 +54,7 @@
     // You can set this to ".SystemUIFont" to use the system font
     // ".ZedSans" currently aliases to "IBM Plex Sans", but this may
     // change in the future
-    "ui_font_family": "JetBrainsMono Nerd Font",
+    "ui_font_family": "JetBrainsMonoNL Nerd Font",
     // Set the UI's font fallbacks, this will be merged with the platform's
     // default font fallbacks.
     "ui_font_fallbacks": null,
@@ -117,7 +113,7 @@
     "vim_mode": true,
     // Whether to enable helix mode and key bindings.
     // Enabling this mode will automatically enable vim mode.
-    "helix_mode": true,
+    "helix_mode": false,
     // Whether to show the informational hover box when moving the mouse
     // over symbols in the editor.
     "hover_popover_enabled": false,
@@ -133,7 +129,7 @@
     //         "restore_on_startup": "last_workspace",
     //  3. Do not restore previous workspaces
     //         "restore_on_startup": "none",
-    "restore_on_startup": "empty_tab",
+    "restore_on_startup": "launchpad",
     // Whether to attempt to restore previous file's state when opening it again.
     // The state is stored per pane.
     // When disabled, defaults are applied instead of the state restoration.
@@ -2228,6 +2224,9 @@
     "context_servers": {},
     // Configures agent servers available in the agent panel.
     "agent_servers": {
+        "codex-acp": {
+            "type": "registry"
+        },
         "opencode": {
             "type": "registry"
         }

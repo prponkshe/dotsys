@@ -7,16 +7,20 @@ return {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				lua = { "stylua" },
+				nix = { "nixfmt" },
 			},
 			formatters = {
 				["clang-format"] = {
-					prepend_args = { "-style=file", "-fallback-style=LLVM" },
+					prepend_args = {
+						"-style=file",
+						"-fallback-style=LLVM",
+					},
 				},
 			},
 		})
 
 		vim.keymap.set("n", "<leader>cf", function()
 			require("conform").format({ bufnr = 0 })
-		end)
+		end, { desc = "Format buffer" })
 	end,
 }

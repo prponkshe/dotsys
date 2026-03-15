@@ -5,14 +5,14 @@ return {
 
 		vim.keymap.set("n", "<leader>tt", function()
 			require("trouble").toggle()
-		end)
+		end, { desc = "Toggle Trouble" })
 
 		vim.keymap.set("n", "[t", function()
 			require("trouble").next({ skip_groups = true, jump = true })
-		end)
+		end, { desc = "Trouble next" })
 
 		vim.keymap.set("n", "]t", function()
 			require("trouble").previous({ skip_groups = true, jump = true })
-		end)
+		end, { desc = "Trouble prev" })
 	end,
 }

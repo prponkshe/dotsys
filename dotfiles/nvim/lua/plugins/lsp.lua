@@ -15,6 +15,7 @@ return {
 				"pyright",
 				"lua_ls",
 				"rust_analyzer",
+                "nixd"
 			}
 
 			for _, server in ipairs(servers) do

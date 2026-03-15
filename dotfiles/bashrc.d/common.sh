@@ -2,7 +2,7 @@ alias bots='sshpass -p Nimda#321 ssh local@10.10.0.105'
 alias ups='sshpass -p Addverb@2025!@# ssh addverb@10.112.184.54'
 
 # Terminal
-alias v='nvim'
+alias v='nvim $(fzf)'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

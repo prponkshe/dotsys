@@ -24,36 +24,36 @@ autocmd({ "BufWritePre" }, {
 autocmd("LspAttach", {
 	group = code_group,
 	callback = function(e)
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "K", function()
+		local function map(mode, lhs, rhs, desc)
+			vim.keymap.set(mode, lhs, rhs, { buffer = e.buf, desc = desc })
+		end
+
+		map("n", "K", function()
 			vim.lsp.buf.hover()
-		end, opts)
-		vim.keymap.set("n", "<leader>gs", function()
-			vim.lsp.buf.workspace_symbol()
-		end, opts)
-		vim.keymap.set("n", "<leader>cd", function()
+		end, "Hover documentation")
+
+		map("n", "<leader>cd", function()
 			vim.diagnostic.open_float()
-		end, opts)
-		vim.keymap.set("n", "<leader>ca", function()
+		end, "Line diagnostics")
+
+		map("n", "<leader>ca", function()
 			vim.lsp.buf.code_action()
-		end, opts)
-		vim.keymap.set("n", "<leader>gr", function()
-			vim.lsp.buf.references()
-		end, opts)
-		vim.keymap.set("n", "<leader>cr", function()
+		end, "Code action")
+
+		map("n", "<leader>cr", function()
 			vim.lsp.buf.rename()
-		end, opts)
-		vim.keymap.set("i", "<C-h>", function()
+		end, "Rename symbol")
+
+		map("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
-		end, opts)
-		vim.keymap.set("n", "[d", function()
+		end, "Signature help")
+
+		map("n", "[d", function()
 			vim.diagnostic.goto_next()
-		end, opts)
-		vim.keymap.set("n", "]d", function()
+		end, "Next diagnostic")
+
+		map("n", "]d", function()
 			vim.diagnostic.goto_prev()
-		end, opts)
+		end, "Prev diagnostic")
 	end,
 })

@@ -8,6 +8,7 @@ return {
 				cpp = { "clang-format" },
 				lua = { "stylua" },
 				nix = { "nixfmt" },
+				yaml = { "yaml-language-server" },
 			},
 			formatters = {
 				["clang-format"] = {

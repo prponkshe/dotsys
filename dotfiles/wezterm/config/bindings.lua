@@ -2,6 +2,7 @@ local wezterm = require('wezterm')
 local platform = require('utils.platform')
 local act = wezterm.action
 local mux = wezterm.mux
+local ssh = require('config.ssh')
 
 local mod = {}
 
@@ -66,6 +67,11 @@ local keys = {
             pane
          )
       end),
+   },
+   {
+      key = '9',
+      mods = mod.SUPER_REV,
+      action = ssh.ssh_picker_action(),
    },
    { key = 'F11', mods = 'NONE',    action = act.ToggleFullScreen },
    { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },

@@ -1,6 +1,7 @@
 local wezterm = require('wezterm')
 local platform = require('utils.platform')
 local act = wezterm.action
+local mux = wezterm.mux
 
 local mod = {}
 
@@ -15,14 +16,56 @@ end
 -- stylua: ignore
 local keys = {
    -- misc/useful --
-   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
-   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
-   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
-   { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
+   { key = '1', mods = mod.SUPER_REV, action = 'ActivateCopyMode' },
+   { key = '2', mods = mod.SUPER_REV, action = act.ActivateCommandPalette },
+   { key = '3', mods = mod.SUPER_REV, action = act.ShowLauncher },
+   { key = '4', mods = mod.SUPER_REV, action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
    {
-      key = 'F5',
-      mods = 'NONE',
-      action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
+      key = 'o',
+      mods = mod.SUPER_REV,
+      action = wezterm.action_callback(function(window, pane)
+         local choices = {}
+         for _, name in ipairs(mux.get_workspace_names()) do
+            table.insert(choices, { label = name, id = name })
+         end
+         table.insert(choices, { label = '  new workspace', id = '__create__' })
+
+         window:perform_action(
+            act.InputSelector({
+               title = 'Workspaces',
+               choices = choices,
+               fuzzy = true,
+               action = wezterm.action_callback(function(inner_window, inner_pane, choice_id)
+                  if not choice_id then
+                     return
+                  end
+                  if choice_id == '__create__' then
+                     inner_window:perform_action(
+                        act.PromptInputLine({
+                           description = 'Workspace name',
+                           action = wezterm.action_callback(function(prompt_window, prompt_pane, line)
+                              if not line or line == '' then
+                                 return
+                              end
+                              prompt_window:perform_action(
+                                 act.SwitchToWorkspace({ name = line }),
+                                 prompt_pane
+                              )
+                           end),
+                        }),
+                        inner_pane
+                     )
+                     return
+                  end
+                  inner_window:perform_action(
+                     act.SwitchToWorkspace({ name = choice_id }),
+                     inner_pane
+                  )
+               end),
+            }),
+            pane
+         )
+      end),
    },
    { key = 'F11', mods = 'NONE',    action = act.ToggleFullScreen },
    { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },
@@ -77,7 +120,7 @@ local keys = {
 
    -- window --
    -- window: spawn windows
-   { key = 'n',          mods = mod.SUPER,     action = act.SpawnWindow },
+   { key = 'Enter',          mods = mod.SUPER,     action = act.SpawnWindow },
 
    -- window: zoom window
    {
@@ -128,7 +171,6 @@ local keys = {
    },
 
    -- panes: zoom+close pane
-   { key = 'Enter', mods = mod.SUPER,     action = act.TogglePaneZoomState },
    { key = 'w',     mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = false }) },
 
    -- panes: navigation

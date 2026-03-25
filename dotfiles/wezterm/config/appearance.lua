@@ -1,13 +1,22 @@
 local gpu_adapters = require('utils.gpu-adapter')
+local platform = require('utils.platform')
 local colors = require('colors.custom')
+
+local preferred_adapter = nil
+if platform.is_win then
+   preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu')
+elseif platform.is_linux then
+   preferred_adapter = gpu_adapters:pick_manual('Vulkan', 'IntegratedGpu')
+      or gpu_adapters:pick_manual('Gl', 'IntegratedGpu')
+elseif platform.is_mac then
+   preferred_adapter = gpu_adapters:pick_manual('Metal', 'IntegratedGpu')
+end
 
 return {
    max_fps = 120,
    front_end = 'WebGpu', ---@type 'WebGpu' | 'OpenGL' | 'Software'
-   webgpu_power_preference = 'HighPerformance',
-   -- webgpu_preferred_adapter = gpu_adapters:pick_best(),
-   webgpu_preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu'),
-   -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Gl', 'Other'),
+   webgpu_power_preference = 'LowPower',
+   webgpu_preferred_adapter = preferred_adapter,
    underline_thickness = '1.5pt',
 
    -- cursor
@@ -49,6 +58,7 @@ return {
    },
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
+   window_decorations = "NONE",
    window_frame = {
       active_titlebar_bg = '#090909',
       -- font = fonts.font,

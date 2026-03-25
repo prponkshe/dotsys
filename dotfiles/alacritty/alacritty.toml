@@ -3,7 +3,7 @@
 [window]
 padding = { x = 8, y = 8 }
 dynamic_padding = true
-opacity = 0.96
+opacity = 1.0
 decorations = "None"
 
 [font]
@@ -59,3 +59,9 @@ blue    = "#7fb4ca"
 magenta = "#938aa9"
 cyan    = "#7aa89f"
 white   = "#dcd7ba"
+
+[env]
+IS_ALACRITTY = "1"
+
+[scrolling]
+history = 100000

@@ -3,6 +3,7 @@
   {
     "bindings": {
       "ctrl-/": "workspace::ToggleBottomDock",
+      "ctrl-?": "workspace::NewTerminal",
       "ctrl-b": "workspace::ToggleLeftDock",
       "ctrl-\\": "workspace::ToggleRightDock",
       "ctrl-shift-w": null,

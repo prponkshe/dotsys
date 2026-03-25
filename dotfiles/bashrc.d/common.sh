@@ -35,6 +35,10 @@ alias devb='devcontainer build --workspace-folder '
 # Compression
 alias untar='tar -xvzf'
 
+
+# Custom vcpkg build
+alias vcmake='cmake -B build -S .. -DCMAKE_TOOLCHAIN_FILE=/nix/store/w7jh3llxqn3hi5pn0p0za18qbhi056kb-vcpkg-2025.10.17/share/vcpkg/scripts/buildsystems/vcpkg.cmake'
+
 mkcd() {
   local folder="$1" # Folder name
   mkdir $folder && cd $folder

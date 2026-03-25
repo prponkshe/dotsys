@@ -1,7 +1,12 @@
 {
-  "format_on_save": "on",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "format_on_save": "off",
 
-  "theme": "Kanagawa Dragon",
+  "theme": "Everforest Dark Hard (material)",
   "icon_theme": "Zed (Default)",
   "base_keymap": "VSCode",
   "buffer_font_family": "JetBrainsMonoNL Nerd Font Mono",
@@ -64,6 +69,7 @@
     "dock": null,
   },
   "git_panel": {
+    "tree_view": true,
     "button": false,
     "sort_by_path": true,
   },
@@ -73,10 +79,14 @@
       "model": "gpt-5.2-codex",
       "enable_thinking": false,
     },
+    "commit_message_model": {
+      "provider": "openai",
+      "model": "gpt-5.1-codex",
+    },
     "button": false,
     "default_view": "thread",
     "default_model": {
-      "provider": "openai",
+      "provider": "copilot_chat",
       "model": "gpt-5.2-codex",
       "enable_thinking": false,
     },

@@ -65,3 +65,6 @@ IS_ALACRITTY = "1"
 
 [scrolling]
 history = 100000
+
+[terminal.shell]
+program = "zellij"

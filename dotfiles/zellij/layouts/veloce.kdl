@@ -1,0 +1,30 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+
+    tab name="core" cwd="~/git/veloce/core" {
+        pane
+    }
+
+    tab name="v4-valley" {
+        pane command="ssh" {
+            args "-J" "local@10.10.0.105" "veloce@10.12.1.50"
+        }
+    }
+
+    tab name="valley-fms" {
+        pane command="ssh" {
+            args "local@10.10.0.105"
+        }
+    }
+
+    tab name="oxker" {
+        pane {
+            command "oxker"
+        }
+    }
+}

@@ -201,3 +201,63 @@ cores() {
   echo "Running: ${COMMAND[*]} on CPUs 0 to $((NUM_CORES - 1)) with mask 0x$CPU_MASK_HEX"
   taskset 0x$CPU_MASK_HEX "${COMMAND[@]}"
 }
+
+zz() {
+  local layouts_dir="$HOME/.config/zellij/layouts"
+  local session=""
+  local arg="${1:-}"
+
+  _get_layouts() {
+    if command -v fd >/dev/null 2>&1; then
+      (
+        cd "$layouts_dir" || return 1
+        fd --max-depth 1 --extension kdl --strip-cwd-prefix .
+      ) 2>/dev/null | sed 's/\.kdl$//'
+    else
+      echo "Warning: 'fd' not found, falling back to slower 'find'. Consider installing 'fd' for better performance." >&2
+      find "$layouts_dir" -maxdepth 1 -name '*.kdl' -printf '%f\n' 2>/dev/null | sed 's/\.kdl$//'
+    fi
+  }
+
+  if [[ "$arg" == "--list" || "$arg" == "-l" ]]; then
+    echo "Available layouts:"
+    _get_layouts
+    return 0
+  fi
+
+  if [[ -n "$ZELLIJ_PANE_PID" ]]; then
+    echo "You are already inside a Zellij session. Avoid nesting sessions."
+    return 1
+  fi
+
+  session="$arg"
+
+  if [[ -z "$session" ]]; then
+    if command -v fzf >/dev/null 2>&1; then
+      session="$(
+        _get_layouts | fzf \
+          --prompt="Select Zellij Layout > " \
+          --height=50% \
+          --layout=reverse \
+          --border \
+          --exit-0
+      )"
+      if [[ -z "$session" ]]; then
+        echo "No layout selected."
+        return 1
+      fi
+    else
+      echo "fzf not found and no layout argument given."
+      echo "Available layouts:"
+      _get_layouts
+      return 1
+    fi
+  fi
+
+  if [[ ! -f "$layouts_dir/$session.kdl" ]]; then
+    echo "Layout '$session' does not exist in $layouts_dir"
+    return 1
+  fi
+  zellij -l "$session"
+  zellij action rename-session "$session"
+}

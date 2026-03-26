@@ -1,0 +1,24 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+
+    tab name="zippy" cwd="~/git/zippy/zippy" {
+        pane
+    }
+
+    tab name="zippy40-valley" {
+        pane {
+            command "lazyssh"
+        }
+    }
+
+    tab name="oxker" {
+        pane {
+            command "oxker"
+        }
+    }
+}

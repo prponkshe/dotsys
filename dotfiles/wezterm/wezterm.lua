@@ -1,15 +1,25 @@
-local Config = require('config')
+-- Pull in the wezterm API
+local wezterm = require 'wezterm'
 
-require('events.left-status').setup()
-require('events.right-status').setup({ date_format = '%a %H:%M:%S' })
-require('events.tab-title').setup({ hide_active_tab_unseen = false, unseen_icon = 'numbered_box' })
-require('events.new-tab-button').setup()
-require('events.gui-startup').setup()
+-- This will hold the configuration.
+local config = wezterm.config_builder()
 
-return Config:init()
-   :append(require('config.appearance'))
-   :append(require('config.bindings'))
-   :append(require('config.domains'))
-   :append(require('config.fonts'))
-   :append(require('config.general'))
-   :append(require('config.launch')).options
+-- This is where you actually apply your config choices.
+
+-- For example, changing the initial geometry for new windows:
+config.initial_cols = 120
+config.initial_rows = 28
+
+-- or, changing the font size and color scheme.
+config.font_size = 11
+config.font = wezterm.font("JetBrainsMonoNLNerdFont")
+config.color_scheme = 'Kanagawa (Gogh)'
+
+config.window_decorations = "RESIZE"
+config.enable_tab_bar = false
+
+
+config.default_prog = { 'zellij' }
+
+-- Finally, return the configuration to wezterm:
+return config

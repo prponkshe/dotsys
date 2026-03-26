@@ -4,16 +4,37 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl a" { SwitchToMode "normal"; }
-        bind "Ctrl Shift [" { NewPane "down"; SwitchToMode "locked"; }
-        bind "Ctrl Shift ]" { NewPane "right"; SwitchToMode "locked"; }
-        bind "Alt o" {
+        bind "Ctrl Alt g" { SwitchToMode "normal"; }
+        // Pane shit
+        bind "Ctrl Alt \\" { NewPane "right"; SwitchToMode "locked"; }
+        bind "Alt \\" { NewPane "down"; SwitchToMode "locked"; }
+        bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "Alt w" { CloseFocus; SwitchToMode "locked"; }
+        bind "Ctrl Alt d" { Detach; }
+        // Tabs shit
+        bind "Alt ]" { GoToNextTab; }
+        bind "Alt [" { GoToPreviousTab; }
+        bind "Ctrl Alt Left" { MoveTab "Left"; }
+        bind "Ctrl Alt Right" { MoveTab "Right"; }
+        bind "Alt t" { NewTab; SwitchToMode "locked"; }
+        bind "Ctrl Alt 0" { SwitchToMode "renametab"; TabNameInput 0; }
+        // Sessions shit
+        bind "Ctrl Alt o" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
             }
             SwitchToMode "locked"
         }
+        bind "Ctrl Alt 1" {
+            // Note: you must use the absolute path to the plugin file
+            LaunchOrFocusPlugin "file:/home/prponkshe/.config/zellij/plugins/zsm.wasm" {
+                floating true
+                move_to_focused_tab true
+                base_paths "/home/prponkshe/git|/home/prponkshe/Configurations"
+            }
+        }
+        // File picker things
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -140,26 +161,20 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
+        bind "Alt left" { MoveFocus "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Alt right" { MoveFocus "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
+        bind "Alt h" { MoveFocus "left"; }
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
-        bind "Alt o" { MoveTab "right"; }
+        bind "Alt l" { MoveFocus "right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl a" { SwitchToMode "locked"; }
+        bind "Ctrl Alt g" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "entersearch" {
@@ -222,12 +237,8 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    about location="zellij:about"
     compact-bar location="zellij:compact-bar"
     configuration location="zellij:configuration"
-    filepicker location="zellij:strider" {
-        cwd "/"
-    }
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar"
@@ -243,6 +254,7 @@ plugins {
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
 }
+
 web_client {
     font "monospace"
 }
@@ -302,7 +314,7 @@ default_layout "compact"
 //   - true (default, enabled)
 //   - false
 //
-// pane_frames false
+pane_frames false
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
